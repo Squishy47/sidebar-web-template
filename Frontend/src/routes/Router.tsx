@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import App from "../App";
 import Root from "./Root";
 import { Dashboard } from "../pages/Dashboard";
+import { UserProvider } from "../contexts/AuthContext";
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/app",
-    element: <App />,
+    element: (
+      <UserProvider>
+        <App />
+      </UserProvider>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
